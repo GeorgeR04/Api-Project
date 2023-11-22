@@ -5,11 +5,12 @@ import {NavbarItems} from "./Items/NavbarItems.jsx";
 //import Logo2 from "./../assets/ESL_.png";
 //import Logo3 from "./../assets/Studio.png";
 import Dropdownmenu from "./Items/Dropdown.jsx";
+import Dropdownmenun from "./Items/Dropdownn.jsx";
 //  <img src={Logo2} alt="Image description"  className="w-[3.8rem] h-auto " />
 // <img src={Logo} alt="Image description"  className="w-[11rem] h-auto " />
 function Navbar() {
     const [Dropdown, setDropdown] = useState(false);
-
+    const [Dropdownn,setDropdownn]=useState(false);
 
     return (
         <>
@@ -42,6 +43,23 @@ function Navbar() {
 
                         }
 
+                        if (item.title === "Character") {
+                            return (
+                                <li
+                                    key={item.id}
+                                    className={item.className}
+                                    onMouseEnter={() => setDropdownn(true)}
+                                    onMouseLeave={() => setDropdownn(false)}
+                                >
+                                    <Link to={item.path}>{item.title}</Link>
+                                    {Dropdownn && <Dropdownmenun />}
+
+
+
+                                </li>
+                            );
+
+                        }
 
 
                         return (

@@ -58,11 +58,11 @@ function FilmPageId() {
 
                         <div className="relative flex flex-col w-[15rem] h-fit p-4 left-[15rem] bg-FilmBg ">
                             <p className="text-textC text-2xl">Director</p>
-                                <Link to={`/staff/${film.director}`} key={film.id}>
+                                <Link to={`/staff/${film.director}`} >
                                     <p className="hover:text-hoverC">{film.director}</p>
                                 </Link>
                             <p className="text-textC text-2xl">Producer</p>
-                                <Link to={`/staff/${film.producer}`} key={film.id}>
+                                <Link to={`/staff/${film.producer}`} >
                                     <p className="hover:text-hoverC">{film.producer}</p>
                                 </Link>
                             <p className="text-textC text-2xl">Original Title</p>

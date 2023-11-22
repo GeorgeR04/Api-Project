@@ -6,21 +6,19 @@ function Dropdownmenu(){
     const [dropdown ,setdropdown]= useState(false);
 
     const [films, setFilms] = useState([]);
-    const redirectTolink = () => {
-        window.location.href = 'https://ghibliapi.vercel.app/';
-    };
 
     useEffect(() => {
         const fetchFilmsData = async () => {
             const filmsData = await fetchGhibliFilms();
             setFilms(filmsData);
+
         };
 
         fetchFilmsData();
     }, []);
 
     return(<>
-            <ul className={dropdown ?"none" : "w-[15rem] bg-gradient-to-t from-GamePage to-GamePage2 h-fit z-20 absolute left-[-3.2rem] "} onClick={() => setdropdown(!dropdown)}>
+            <ul className={dropdown ?"none" : "w-[15rem] bg-gradient-to-t from-GamePage to-GamePage2 h-fit z-20 absolute left-[-3.2rem] p-5 "} onClick={() => setdropdown(!dropdown)}>
                 {films.map((item) =>{
                     return(
                         <li key={item.id} >
@@ -32,6 +30,8 @@ function Dropdownmenu(){
                     );
                 })}
             </ul>
+
+
         </>
     );
 }
