@@ -5,15 +5,39 @@ import {fetchGhibliPeople} from "../../Component/api/api.jsx";
 import {fetchGhiblilocation} from "../../Component/api/api.jsx";
 
 function FilmPageId() {
-    const { id } = useParams();
-    const [film, setFilm] = useState(null);
-    const [people, setPeople] = useState([]);
-    const [location,setlocation]=useState([]);
+    const { id } = useParams();  // Extracts 'id' from the URL parameters
+    const [film, setFilm] = useState(null); // Sets up a variable to hold film data
+    const [people, setPeople] = useState([]); // Sets up a variable to hold people data
+    const [location,setlocation]=useState([]); // Sets up a variable to hold location data
+
+    // Function to convert total minutes to hours and minutes format
     const convertToHoursAndMinutes = (totalMinutes) => {
         const hours = Math.floor(totalMinutes / 60);
         const minutes = totalMinutes % 60;
         return `${hours}h ${minutes}min`;
     };
+
+    //What it does: This code runs when the 'id' value changes.
+    //
+    // How it works: It starts by fetching data related to films, people, and locations from the api.
+    //
+    // What it does with each item:
+    //
+    // It finds a specific film based on its title matching the 'id'.
+    // Then, it filters people and locations related to that film by checking if their associated films include the URL of the found film.
+    // foundFilm: Represents the film that matches the 'id' from the fetched film data.
+    //
+    // peopleRelatedToFilm: Is an array containing people associated with the found film.
+    //
+    // locationRelatedToFilm: Is an array containing locations associated with the found film.
+    //
+    // What happens to the results:
+    //
+    // The found film is updated using setFilm(foundFilm).
+    // The people state is updated with setPeople(peopleRelatedToFilm).
+    // The location state is updated with setLocation(locationRelatedToFilm).
+    // In simpler terms: When the 'id' changes, this code fetches information about a specific film,
+    // filters people and locations associated with that film, and updates the corresponding variables with this information.
 
     useEffect(() => {
         const fetchData = async () => {
@@ -39,6 +63,8 @@ function FilmPageId() {
         fetchData();
     }, [id]); // Runs when 'id' changes
 
+    //this code checks if the film variable exists and renders different content based on its existence.
+    // If it exists, one set of content is displayed; if it doesn't, another set of content is shown.
     return (
         <>
             {film ? (
@@ -58,13 +84,9 @@ function FilmPageId() {
 
                         <div className="relative flex flex-col w-[15rem] h-fit p-4 left-[15rem] bg-FilmBg ">
                             <p className="text-textC text-2xl">Director</p>
-                                <Link to={`/staff/${film.director}`} >
                                     <p className="hover:text-hoverC">{film.director}</p>
-                                </Link>
                             <p className="text-textC text-2xl">Producer</p>
-                                <Link to={`/staff/${film.producer}`} >
                                     <p className="hover:text-hoverC">{film.producer}</p>
-                                </Link>
                             <p className="text-textC text-2xl">Original Title</p>
                                 <p>{film.original_title}</p>
                             <p className="text-textC text-2xl">Original Title Romanised</p>

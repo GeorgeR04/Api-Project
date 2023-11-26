@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import { Link,  } from "react-router-dom";
 import {NavbarItems} from "./Items/NavbarItems.jsx";
-//import Logo from "./../assets/LOGOMLG.png";
-//import Logo2 from "./../assets/ESL_.png";
-//import Logo3 from "./../assets/Studio.png";
 import Dropdownmenu from "./Items/Dropdown.jsx";
 import Dropdownmenun from "./Items/Dropdownn.jsx";
-//  <img src={Logo2} alt="Image description"  className="w-[3.8rem] h-auto " />
-// <img src={Logo} alt="Image description"  className="w-[11rem] h-auto " />
+//This is the code that display the navbar
 function Navbar() {
-    const [Dropdown, setDropdown] = useState(false);
-    const [Dropdownn,setDropdownn]=useState(false);
+
+    const [Dropdown, setDropdown] = useState(false);//set a variable to the dropdown1
+    const [Dropdownn,setDropdownn]=useState(false);//set a variable to the dropdown2
 
     return (
         <>
@@ -25,6 +22,7 @@ function Navbar() {
 
                 <ul className="flex relative space-x-5 text-white mt-5 mr-5 h-fit ">
                     {NavbarItems.map((item) => {
+                        //check to see if there is an element name that is =to a specific element and if is then check if the mouse is on the elements if it is display the dropdown
                         if (item.title === "Film") {
                             return (
                                 <li
@@ -63,6 +61,7 @@ function Navbar() {
 
 
                         return (
+                            //display all the elements of the navbar
                             <li key={item.id} className={item.className}>
                                 <Link to={item.path}>{item.title}</Link>
                             </li>

@@ -4,10 +4,34 @@ import logo from './../assets/Studio.png';
 import {Link} from "react-router-dom";
 
 function Film(){
+
+    //useState([]) is a React hook that allows functional components to manage state.
+    // in this example It initializes a state variable named films with an empty array [] as its default value.
+    // setFilms is the function used to update this state variable.
+    //
+    // The films variable will contain data related to films retrieved or managed within the React component.
+
     const [films, setFilms] = useState([]);
+
+    //This function is to redirect to a link you can replace this by a <Link> to={path}
     const redirectTolink = () => {
         window.location.href = 'https://ghibliapi.vercel.app/';
     };
+
+    //for more information about useEffect https://legacy.reactjs.org/docs/hooks-effect.html
+    //When it runs: This code runs when the component is first shown on the screen.
+    //
+    // What it does: It gets film data using a function called fetchGhibliFilms()
+    // which fetches information about movies from api.jsx.
+    // This happens inside an asynchronous function called fetchFilmsData.
+    //
+    // What it then does: Once it gets the film data, it updates the films variable using setFilms(filmsData).
+    // This setFilms function is what React gives us to update a variable that behaves like a memory space within the component.
+    //
+    // How often it runs: The useEffect code inside the function [] means it only runs this code once, when the component is first shown.
+    // If you put something inside the [], it will check for changes in that particular thing, and whenever that changes, this code will run again.
+    //
+    // In simple terms, it's a way to get movie data and store it when the component is first shown.
 
     useEffect(() => {
         const fetchFilmsData = async () => {
@@ -18,6 +42,17 @@ function Film(){
         fetchFilmsData();
     }, []);
 
+//What it does: This line of code uses the map function on the films array.
+//
+// How it works: The map function is like a loop that goes through each item in the films array from the api one by one.
+//
+// What it does with each item: For each film in the films array, it runs a piece of code that uses that film's information.
+//
+// film and index: Inside the loop, film represents each individual film object in the array from the api, and index is the position of that film in the array from the api.
+//
+// What happens to the results: Display information about the film , it creates a new array (filmDetails) with the results of that code for each film.
+//
+// In simpler terms, it's a way to go through each film in the films list and display each film's information, storing the results in a new array called filmDetails.
     const filmDetails = films.map((film, index) => (
 
         <li className="relative " key={index}>
@@ -39,6 +74,7 @@ function Film(){
         </li>
     ));
 
+    //Resulat of return: Create the Gray element with Studio Ghibli API link
     return(
         <>
 

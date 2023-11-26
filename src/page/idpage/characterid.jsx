@@ -4,6 +4,7 @@ import {Link, useParams} from "react-router-dom";
 import {fetchGhibliPeople} from "../../Component/api/api.jsx";
 import {fetchGhiblilocation} from "../../Component/api/api.jsx";
 
+//Same methode as Filmpage but for character
 function FilmcharactereId() {
     const { id } = useParams();
     const [people, setPeople] = useState([]);
@@ -53,7 +54,7 @@ function FilmcharactereId() {
                             <p className="text-textC text-2xl">Film Related:</p>
                             {film.map(Item => (
                                 <Link key={Item.id} to={`/film/${Item.title}`} >
-                                        <p >
+                                        <p className="hover:text-hoverC ">
                                             {Item.title}
                                         </p>
                                 </Link>

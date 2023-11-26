@@ -1,3 +1,5 @@
+//this code contain the element of the navbar
+
 export  const NavbarItems=[
     {
         id: 0,
@@ -16,18 +18,6 @@ export  const NavbarItems=[
         id: 2,
         title: "Character",
         path: "./character",
-        className:" hover:text-grayA"
-    },
-    {
-        id: 3,
-        title: "Staff",
-        path: "./staff",
-        className:" hover:text-grayA"
-    },
-    {
-        id: 4,
-        title: "Location",
-        path: "./location",
         className:" hover:text-grayA"
     },
 

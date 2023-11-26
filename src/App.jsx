@@ -8,6 +8,9 @@ import FilmcharactereId from "./page/idpage/characterid.jsx";
 
 
 function App() {
+
+
+    //In this File We are looking to make the page with the component <Route>
 return(
     <>
         <div>
@@ -15,10 +18,8 @@ return(
         </div>
         <Routes>
             <Route path="/" exact element={<Home/>}></Route>
-            <Route  path="/film" index element={<Film />}></Route>
+            <Route path="/film" index element={<Film />}></Route>
             <Route path="/film/:id" element={<FilmPageId/>}></Route>
-
-
             <Route path="/character/:id" element={<FilmcharactereId/>}></Route>
 
         </Routes>

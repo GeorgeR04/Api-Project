@@ -1,5 +1,7 @@
 import axios from 'axios';
-
+//this code fetches film data from an external API using Axios.
+// If the fetching process encounters an error, it logs the error to the console and returns an empty array as a default value.
+// Otherwise, it returns the fetched film data.
 export const fetchGhibliFilms = async () => {
     try {
         const response = await axios.get('https://ghibliapi.vercel.app/films');
